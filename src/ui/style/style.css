@@ -1,5 +1,5 @@
 .app{display: flex;
-flex-direction: row;}
+flex-direction: column;}
 
 .country{
     width: 300px;
@@ -8,4 +8,8 @@ flex-direction: row;}
 .country__flag{
     display: inline-block;
     width: 300px;
+}
+
+.btn{
+    width: 150px;
 }
