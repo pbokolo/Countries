@@ -1,8 +1,9 @@
-
+import Country from "./Country";
+import "../style/style.css";
 function App() {
   return (
     <div className="app">
-      <p>Countries</p>
+      <Country/>
     </div>
   );
 }
