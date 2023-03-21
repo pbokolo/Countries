@@ -1,6 +1,7 @@
 @mixin page {
     min-height: 100vh;
     min-width: 100vw;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     background-color: var(--color-grey-light-1);
   }

@@ -1,22 +1,14 @@
-import { useState } from "react";
-import axios from "axios";
-import Country from "./Country";
-import "../style/style.css";
+import {Routes, Route} from "react-router-dom";
+
+import { Home, Lost } from "../pages";
+import "../style/main.scss";
 
 function App() {
-  const [country, setCountry] = useState(null);
-  const fetch = async () => {
-    const result = await axios.get('https://restcountries.com/v3.1/name/DR Congo');
-    const [data] = result.data;
-    setCountry(data)
-  }
   return (
-    <div className="app">
-      {country && <Country data={country}/>}
-      <button onClick={() => {
-        if(!country)fetch();
-      }} className="btn btn__click-me">Click me</button>
-    </div>
+    <Routes className="app">
+      <Route exact path="/" Component={Home}/>
+      <Route exact path="*" Component={Lost}/>
+    </Routes>
   );
 }
 

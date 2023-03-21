@@ -1,0 +1,11 @@
+.page__home{
+    @include page;
+    position: relative;
+
+    .btn__locate{
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        right: 50%;
+    }
+}

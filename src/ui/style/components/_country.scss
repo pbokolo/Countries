@@ -1,0 +1,16 @@
+.country{
+    width: 25rem;
+    background-color: var(--color-white);
+    transition: all .2s;
+
+    &__flag{
+        display: inline-block;
+        width: 25rem;
+        height: 15rem;
+    }
+
+    &:hover{
+        cursor: pointer;
+        transform: translateY(.5rem);
+    }
+}
