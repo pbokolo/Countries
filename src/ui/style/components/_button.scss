@@ -3,5 +3,22 @@
     height: 3rem;
     cursor: pointer; 
 
-   
+   &__locate{
+    background-color: var(--color-blue);
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    border: none;
+    transition: all .2s;
+
+    &:hover{
+        transform: translateY(-.1rem);
+        background-color: lighten(#0385d6, 5%);
+    }
+
+    &:active{
+        transform: translateY(.1rem);
+        background-color: darken(#0385d6, 5%);
+    }
+   }
 }
