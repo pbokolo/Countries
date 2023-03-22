@@ -1,8 +1,12 @@
 .country{
     width: 25rem;
     height: 30rem;
+    margin: auto;
     background-color: var(--color-white);
     transition: all .2s;
+    box-shadow: 0 .1rem .1rem  var(--color-grey-light-4);
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
 
     &__flag{
         display: inline-block;
@@ -10,8 +14,18 @@
         height: 15rem;
     }
 
+    &__details{
+        margin: 0 1.6rem;
+    }
+
     &:hover{
         cursor: pointer;
-        transform: translateY(.5rem);
+        transform: translateY(-.15rem);
+        box-shadow: 0 .15rem .1rem  var(--color-grey-light-4);
+    }
+
+    &:active{
+        transform: translateY(.1rem);
+        box-shadow: 0 .1rem .1rem  var(--color-grey-light-4);
     }
 }
