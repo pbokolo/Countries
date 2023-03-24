@@ -35,8 +35,9 @@
     }
 
     &__detail{
-        display: flex;
+        display: grid;
         align-items: center;
+        grid-template-columns: 0.1fr 1fr;
     }
     &__name{
         grid-column: 3 / span 21;
