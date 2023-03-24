@@ -1,15 +1,8 @@
 .btn{
-    width: 10rem;
-    height: 3rem;
-    cursor: pointer; 
-
-   &__locate{
     background-color: var(--color-blue);
-    height: 5rem;
-    width: 5rem;
-    border-radius: 50%;
     border: none;
     transition: all .2s;
+    cursor: pointer; 
 
     &:hover{
         transform: translateY(-.1rem);
@@ -20,5 +13,45 @@
         transform: translateY(.1rem);
         background-color: darken(#0385d6, 5%);
     }
+
+   &__locate{
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon{
+        width: 3rem;
+        height: 3rem;
+        color: var(--color-white);
+        animation: bounce 1s infinite;     
+    }
+
+   
+     
+   }
+
+   @keyframes bounce {
+     0%{
+        transform: translateY(0);
+     }
+
+     25%{
+        transform: translateY(0.1rem);
+     }
+     
+     50%{
+        transform: translateY(0);
+     }
+    
+     75%{
+        transform: translateY(0.05rem);
+     }
+
+     100%{
+        transform: translateY(0);
+     }
    }
 }
