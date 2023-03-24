@@ -34,6 +34,10 @@
         height: 100%;  
     }
 
+    &__detail{
+        display: flex;
+        align-items: center;
+    }
     &__name{
         grid-column: 3 / span 21;
         grid-row: 5 / 7;

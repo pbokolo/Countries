@@ -1,6 +1,6 @@
 import React from "react";
-import { MdPersonPinCircle as Location } from 'react-icons/md'
+import MyLocationOutlinedIcon from '@mui/icons-material/MyLocationOutlined';
 
 export default function LocateBtn({clickHandler}){
-    return <button onClick={clickHandler} className="btn btn__locate"><Location className="icon" /></button>
+    return <button onClick={clickHandler} className="btn btn__locate"><MyLocationOutlinedIcon className="icon" /></button>
 }
