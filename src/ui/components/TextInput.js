@@ -4,7 +4,7 @@ export default function TextInput({type, value, changeHandler, placeholder, erro
     return <>
     <input type={type} value={value} onChange={changeHandler}
      placeholder={placeholder}
-      className="textinput" />
+      className={`textinput ${error ? 'textinput--error' : ''}`} />
       <label>{error || placeholder}</label>
     </>
 }
