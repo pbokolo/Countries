@@ -11,8 +11,8 @@ export default function Home(){
     const result = await axios.get(`https://restcountries.com/v3.1/name/${name}`);
     const [data] = result.data;
     setCountry(data);
+    error && setError("")
     }catch(error){
-      console.log(error.response.data);
       setError(error.response.data.message);
     }
   }
