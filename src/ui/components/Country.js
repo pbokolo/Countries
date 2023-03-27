@@ -19,19 +19,20 @@ function formatCompactNumber(number) {
   }
 
 export default function Country({data}){
-    const [lang] = Object.keys(data.languages);
+     /*const [languages] = Object.keys(data.languages);
     const [cur] = Object.keys(data.currencies);
-    const {name, symbol} = data.currencies[`${cur}`];
+    const {name, symbol} = data.currencies[`${cur}`]; */
+    console.log(data)
     return <div className="country">
-        <img src={data.flags.png} alt={`${data.name.common} flag`} className="country__flag"/>
+        <img src={data.flags.png} alt={`${data?.name?.common} flag`} className="country__flag"/>
        
         <p className="country__name">{data.name.common}</p>
         <p className="country__region"><span className="country__detail"><PublicOutlinedIcon />{data.region}</span></p>
-        <p className="country__pop"><span className="country__detail"><EscalatorWarningOutlinedIcon/>{formatCompactNumber(data.population)}</span></p>
-        <p className="country__lang"><span className="country__detail"><LanguageOutlinedIcon/>{data.languages[lang]}</span></p>
+       <p className="country__pop"><span className="country__detail"><EscalatorWarningOutlinedIcon/>{formatCompactNumber(data.population)}</span></p>
+         {/*<p className="country__lang"><span className="country__detail"><LanguageOutlinedIcon/>{data?.languages[lang]}</span></p>
         <p className="country__currency">
             <span className="country__detail">
-                <AttachMoneyOutlinedIcon/>{`${name} (${symbol})`}</span></p>
+<AttachMoneyOutlinedIcon/>{`${name} (${symbol})`}</span></p>*/}
        
         </div>
 }

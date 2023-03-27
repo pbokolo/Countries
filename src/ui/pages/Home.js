@@ -1,29 +1,31 @@
 import React, {useState} from "react";
-import axios from "axios";
 
-import {Country, LocateBtn, SearchForm} from "../components";
+import { fetchAll, fetchCountry } from "../../controller/countries";
+import {LocateBtn, SearchForm, CountryContainer} from "../components";
 
 export default function Home(){
-  const [country, setCountry] = useState(null);
+  const [countries, setCountries] = useState([]);
   const [error, setError] = useState("");
-  const fetch = async (name = "DR Congo") => {
+
+  const getAll = async () => {
+    const data = await fetchAll();
+    setCountries(data);
+    //console.log(data)
+    error && setError("");
+  }
+  const handleSearch = async (e, keyWord) => {
+    e.preventDefault();
     try{
-    const result = await axios.get(`https://restcountries.com/v3.1/name/${name}`);
-    const [data] = result.data;
-    setCountry(data);
-    error && setError("")
+    const data = await fetchCountry(keyWord);
+    setCountries([data]);
+    error && setError("");
     }catch(error){
       setError(error.response.data.message);
     }
   }
-
-  const handleSearch = (e, keyWord) => {
-    e.preventDefault();
-    fetch(keyWord)
-  }
     return <div className="page page__home">
       <SearchForm error={error} submitHandler={handleSearch}/>
-        {country ? <Country data={country}/> : null}
-        <LocateBtn clickHandler={() => fetch()}/>
+      <CountryContainer countries={countries} />
+        <LocateBtn clickHandler={getAll}/>
     </div>
 }
