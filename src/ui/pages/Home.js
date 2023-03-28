@@ -10,7 +10,6 @@ export default function Home(){
   const getAll = async () => {
     const data = await fetchAll();
     setCountries(data);
-    //console.log(data)
     error && setError("");
   }
   const handleSearch = async (e, keyWord) => {

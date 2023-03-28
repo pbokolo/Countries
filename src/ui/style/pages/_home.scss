@@ -1,12 +1,18 @@
-.page__home{
-    @include page;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 10px;
+.page__home {
+  @include page;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 10px;
 
-    .btn__locate{
-        position: absolute;
-        bottom: 1rem;
-        left: 50%;
-        right: 50%;
-    }
+  .container {
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .btn__locate {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    right: 50%;
+  }
 }
