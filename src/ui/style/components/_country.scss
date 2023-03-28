@@ -1,6 +1,6 @@
 .country {
-  width: 25rem;
-  height: 30rem;
+  width: $card-width;
+  height: $card-height;
   margin: auto;
   background-color: var(--color-white);
   transition: all 0.2s;
@@ -10,11 +10,10 @@
   display: grid;
   grid-template-rows: repeat(10, 3rem);
   grid-template-columns: repeat(25, 1rem);
-  margin: 1rem;
 
   &:hover {
     cursor: pointer;
-    transform: translateY(-0.15rem);
+    transform: translateY(-0.3rem);
     box-shadow: 0 0.15rem 0.1rem var(--color-grey-light-4);
   }
 

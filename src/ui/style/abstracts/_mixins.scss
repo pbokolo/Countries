@@ -1,6 +1,5 @@
 @mixin page {
-    min-height: 100vh;
-    min-width: 100vw;
-    display: grid;
-    background-color: var(--color-grey-light-1);
-  }
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: var(--color-grey-light-1);
+}
