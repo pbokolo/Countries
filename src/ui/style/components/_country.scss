@@ -4,8 +4,9 @@
   margin: auto;
   background-color: var(--color-white);
   transition: all 0.2s;
-  box-shadow: 0 0.1rem 0.1rem var(--color-grey-light-4);
+  box-shadow: 0 0.1rem 0.1rem var(--color-grey-light-3);
   border-radius: 0.5rem;
+  border: 0.1rem solid var(--color-grey-light-3);
   overflow: hidden;
   display: grid;
   grid-template-rows: repeat(10, 3rem);
@@ -45,7 +46,7 @@
     grid-row: 5 / 7;
     align-self: center;
     text-align: center;
-    background-color: rgba(#ffffff, 0.95);
+    background-color: rgba(#f0eeee, 0.95);
     box-shadow: 0 0.1rem 0.1rem var(--color-grey-light-3);
     border-radius: 0.2rem;
     transition: all 0.2s;
