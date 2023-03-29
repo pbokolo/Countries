@@ -9,4 +9,13 @@
   margin-bottom: 1rem;
   border-bottom: 0.1rem solid var(--color-grey-light-3);
   transition: all 0.2s;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $grid-gap;
+
+  .form {
+    grid-column: 5 / 9;
+    align-self: center;
+  }
 }
