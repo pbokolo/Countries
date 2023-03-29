@@ -1,6 +1,5 @@
 .page__home {
   @include page;
-  position: relative;
   scroll-behavior: smooth;
 
   .content {
