@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { fetchAll, fetchCountry } from "../../controller/countries";
-import { LocateBtn, SearchForm, CountryContainer } from "../components";
+import { LocateBtn, SearchForm, CountryContainer, AppBar } from "../components";
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
@@ -24,8 +24,8 @@ export default function Home() {
   };
   return (
     <div className="page page__home">
+      <AppBar error={error} submitHandler={handleSearch} />
       <div className="content">
-        <SearchForm error={error} submitHandler={handleSearch} />
         <CountryContainer countries={countries} />
       </div>
       <LocateBtn clickHandler={getAll} />

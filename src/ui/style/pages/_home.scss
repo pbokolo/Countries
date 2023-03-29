@@ -1,9 +1,9 @@
 .page__home {
   @include page;
+  position: relative;
+  scroll-behavior: smooth;
 
   .content {
-    width: 100%;
-    min-height: 100%;
     margin: auto 0;
     display: grid;
     gap: $grid-gap;
@@ -23,13 +23,15 @@
       grid-template-columns: repeat(4, $card-width);
       grid-template-rows: repeat(4, $card-height);
       gap: $grid-gap;
+      margin-top: 6rem;
     }
   }
 
   .btn__locate {
-    position: absolute;
-    bottom: 1rem;
+    position: fixed;
+    bottom: 0;
     left: 50%;
     right: 50%;
+    z-index: 9999;
   }
 }

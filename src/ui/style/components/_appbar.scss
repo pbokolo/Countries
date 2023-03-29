@@ -1,0 +1,11 @@
+.app__bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 5rem;
+  background-color: var(--color-white);
+  margin-bottom: 1rem;
+  border-bottom: 0.1rem solid var(--color-grey-light-3);
+}
