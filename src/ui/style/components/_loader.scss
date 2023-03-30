@@ -1,0 +1,39 @@
+.loader {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 0.3rem solid var(--color-grey-dark-3);
+  z-index: 10;
+
+  .spinner {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border-top: 0.3rem solid var(--color-blue);
+    animation: rotate 0.5s infinite;
+    z-index: 9999;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+
+    25% {
+      transform: rotate(90deg);
+    }
+
+    50% {
+      transform: rotate(180deg);
+    }
+
+    75% {
+      transform: rotate(270deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
