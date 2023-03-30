@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { fetchAll, fetchCountry } from "../../controller/countries";
-import { LocateBtn, SearchForm, CountryContainer, AppBar } from "../components";
+import { LocateBtn, CountryContainer, AppBar } from "../components";
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
