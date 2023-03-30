@@ -13,8 +13,8 @@ const fetchAll = async () => {
   if (!result) throw new Error(`Country not found`);
   let { data } = result;
   data = data.sort((a, b) => {
-    const nameA = a.name.common; // ignore upper and lowercase
-    const nameB = b.name.common; // ignore upper and lowercase
+    const nameA = a.name.common.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.name.common.toUpperCase(); // ignore upper and lowercase
     if (nameA < nameB) {
       return -1;
     }

@@ -1,19 +1,24 @@
-body{
-    font-family: sans-serif;
+body {
+  font-family: sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.7;
 }
 
-.country{
-    &__name{
-        font-size: 1.65rem;
-        font-weight: 900;
-        color: var(--color-grey-dark-1);
-    }
-    
-    &__region, &__pop, &__lang, &__currency{
-        font-weight: 400;
-        color: var(--color-grey-dark-2);
-    }
+.country {
+  &__name {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: var(--color-grey-dark-1);
+  }
+
+  &__region,
+  &__pop,
+  &__lang,
+  &__currency {
+    font-family: "Hind", sans-serif;
+    font-weight: 400;
+    color: var(--color-grey-dark-2);
+  }
 }
