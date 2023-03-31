@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-import { fetchAll, fetchCountry } from "../../controller/countries";
+import {
+  fetchAll,
+  fetchCountry,
+  fetchRegion,
+} from "../../controller/countries";
 import { LocateBtn, CountryContainer, AppBar } from "../components";
 
 export default function Home() {
@@ -22,9 +26,25 @@ export default function Home() {
       setError(error.response.data.message);
     }
   };
+
+  const handleMenuClick = async (e) => {
+    const [textContent] = e.target.childNodes;
+    const { data } = textContent;
+    if (data.toLowerCase() === "all") {
+      getAll();
+      return;
+    }
+
+    const counts = await fetchRegion(data.toLowerCase());
+    setCountries(counts);
+  };
   return (
     <div className="page page__home">
-      <AppBar error={error} submitHandler={handleSearch} />
+      <AppBar
+        error={error}
+        submitHandler={handleSearch}
+        menuClickHandler={handleMenuClick}
+      />
       <div className="content">
         <CountryContainer countries={countries} />
       </div>
