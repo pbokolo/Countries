@@ -1,0 +1,47 @@
+.nav {
+  &__list {
+    list-style: none;
+    &-item {
+      display: inline-block;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      color: var(--color-grey-dark-1);
+      transition: all 0.2s;
+
+      &:hover {
+        transform: translateY(0.1rem);
+      }
+
+      &--active {
+        background-color: var(--color-blue);
+        border-bottom: 0.1rem solid var(--color-blue);
+      }
+
+      &:active {
+        animation: bounce 3s infinite;
+      }
+    }
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+
+    25% {
+      transform: translateY(0.1rem);
+    }
+
+    50% {
+      transform: translateY(0);
+    }
+
+    75% {
+      transform: translateY(0.05rem);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+}

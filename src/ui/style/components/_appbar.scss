@@ -13,9 +13,13 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: $grid-gap;
+  align-items: center;
 
   .form {
     grid-column: 5 / 9;
-    align-self: center;
+  }
+
+  .nav {
+    grid-column: 9 / 12;
   }
 }
