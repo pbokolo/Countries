@@ -9,15 +9,17 @@ export default function TextInput({
   label,
 }) {
   return (
-    <>
+    <div className="input">
       <input
         type={type}
         value={value}
         onChange={changeHandler}
         placeholder={placeholder}
-        className={`textinput ${error ? "textinput--error" : ""}`}
+        className={`input__text ${error ? "input__text--error" : ""}`}
       />
-      <label>{error || label}</label>
-    </>
+      <label className={`input__label ${error ? "input__label--error" : ""}`}>
+        {error || label}
+      </label>
+    </div>
   );
 }

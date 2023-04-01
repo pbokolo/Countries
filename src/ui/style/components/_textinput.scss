@@ -1,18 +1,33 @@
-.textinput {
-  border: none;
-  border-bottom: 0.1rem solid var(--color-grey-light-4);
-  background-color: var(--color-white);
-  padding: 1rem 0.5rem;
-  border-radius: 0.5rem;
-  display: block;
-  transition: all 0.2s;
+.input {
+  font-family: "Hind", sans-serif;
+  &__text {
+    width: 100%;
+    font-family: inherit;
+    border: none;
+    border-bottom: 0.1rem solid var(--color-grey-light-4);
+    background-color: var(--color-white);
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+    display: block;
+    font-size: 1.5rem;
+    transition: all 0.2s;
 
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid var(--color-blue);
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid var(--color-blue);
+    }
+
+    &--error:focus {
+      border-bottom: 0.1rem solid var(--color-error);
+    }
   }
 
-  &--error:focus {
-    border-bottom: 0.1rem solid var(--color-error);
+  &__label {
+    font-family: inherit;
+    font-size: 1rem;
+
+    &--error {
+      color: var(--color-error);
+    }
   }
 }
