@@ -10,7 +10,7 @@ export default function NavMenu({ clickHandler }) {
           <li
             key={index}
             className={`nav__list-item ${
-              index === 1 ? "nav__list-item--active" : ""
+              index === 0 ? "nav__list-item--active" : ""
             }`}
             value={region}
           >
