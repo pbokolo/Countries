@@ -41,10 +41,11 @@ export default function Home() {
       getAll();
       return;
     }
-
     const counts = await fetchRegion(data.toLowerCase());
     setCountries(counts);
   };
+
+  const handleGeoLoc = () => console.log("Should geolocate");
   return (
     <div className="page page__home">
       <AppBar
@@ -55,7 +56,7 @@ export default function Home() {
       <div className="content">
         {loading ? <Loader /> : <CountryContainer countries={countries} />}
       </div>
-      <LocateBtn clickHandler={getAll} />
+      <LocateBtn clickHandler={handleGeoLoc} />
     </div>
   );
 }

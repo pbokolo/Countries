@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: "Hind", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.7;
@@ -17,7 +17,7 @@ body {
   &__pop,
   &__lang,
   &__currency {
-    font-family: "Hind", sans-serif;
+    font-family: inherit;
     font-weight: 400;
     color: var(--color-grey-dark-2);
   }
