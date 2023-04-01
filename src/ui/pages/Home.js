@@ -1,20 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   fetchAll,
   fetchCountry,
   fetchRegion,
 } from "../../controller/countries";
-import { LocateBtn, CountryContainer, AppBar } from "../components";
+import { LocateBtn, CountryContainer, AppBar, Loader } from "../components";
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getAll();
+  }, []);
 
   const getAll = async () => {
+    setLoading(true);
     const data = await fetchAll();
     setCountries(data);
     error && setError("");
+    setLoading(false);
   };
   const handleSearch = async (e, keyWord) => {
     e.preventDefault();
@@ -46,7 +53,7 @@ export default function Home() {
         menuClickHandler={handleMenuClick}
       />
       <div className="content">
-        <CountryContainer countries={countries} />
+        {loading ? <Loader /> : <CountryContainer countries={countries} />}
       </div>
       <LocateBtn clickHandler={getAll} />
     </div>
