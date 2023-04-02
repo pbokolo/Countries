@@ -1,14 +1,21 @@
 import axios from "axios";
 const API = "https://restcountries.com/v3.1";
 
-const fetchCountry = async (name = "DR Congo") => {
-  const result = await axios.get(`${API}/name/${name}`);
-  if (!result) throw new Error(`Country ${name} not found`);
+const fetchCountry = async (countName, setCountries, setError) => {
+  setCountries([]);
+  const result = await axios.get(`${API}/name/${countName}`);
+  if (!result) throw new Error(`Country ${countName} not found`);
   const [data] = result.data;
-  return data;
+  setCountries([data]);
+  setError("");
 };
 
-const fetchRegion = async (region) => {
+const fetchRegion = async (region, setCountries, setError) => {
+  setCountries([]);
+  if (region === "all") {
+    fetchAll(setCountries, setError);
+    return;
+  }
   const result = await axios.get(`${API}/region/${region}`);
   if (!result) throw new Error(`Country not found`);
   let { data } = result;
@@ -23,10 +30,11 @@ const fetchRegion = async (region) => {
     }
     return 0;
   });
-  return data;
+  setCountries(data);
 };
 
-const fetchAll = async () => {
+const fetchAll = async (setCountries, setError) => {
+  setCountries([]);
   const result = await axios.get(`${API}/all`);
   if (!result) throw new Error(`Country not found`);
   let { data } = result;
@@ -41,7 +49,8 @@ const fetchAll = async () => {
     }
     return 0;
   });
-  return data;
+  setCountries(data);
+  setError("");
 };
 
 export { fetchCountry, fetchAll, fetchRegion };

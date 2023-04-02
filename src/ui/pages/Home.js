@@ -10,39 +10,39 @@ import { LocateBtn, CountryContainer, AppBar, Loader } from "../components";
 export default function Home() {
   const [countries, setCountries] = useState([]);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const loading = countries.length === 0;
 
   useEffect(() => {
     getAll();
   }, []);
 
-  const getAll = async () => {
-    setLoading(true);
-    const data = await fetchAll();
-    setCountries(data);
-    error && setError("");
-    setLoading(false);
-  };
+  /**
+   * Fetches all countries in the world
+   */
+  const getAll = async () => await fetchAll(setCountries, setError);
+
+  /**
+   *
+   * @param {Event object} e
+   * @param {Country name} keyWord
+   */
   const handleSearch = async (e, keyWord) => {
     e.preventDefault();
     try {
-      const data = await fetchCountry(keyWord);
-      setCountries([data]);
-      error && setError("");
+      await fetchCountry(keyWord, setCountries, setError);
     } catch (error) {
       setError(error.response.data.message);
     }
   };
 
+  /**
+   * Fetches all countries from a region
+   * @param {Event object} e
+   */
   const handleMenuClick = async (e) => {
     const [textContent] = e.target.childNodes;
     const { data } = textContent;
-    if (data.toLowerCase() === "all") {
-      getAll();
-      return;
-    }
-    const counts = await fetchRegion(data.toLowerCase());
-    setCountries(counts);
+    await fetchRegion(data.toLowerCase(), setCountries, setError);
   };
 
   const handleGeoLoc = () => console.log("Should geolocate");
