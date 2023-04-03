@@ -7,8 +7,8 @@ export default function NavMenu({ clickHandler }) {
       <ul
         className="nav__list"
         onClick={(e) => {
-          clickHandler(e);
           setSelected(Number(e.target.dataset.index));
+          clickHandler(e);
         }}
       >
         {regions.map((region, index) => (

@@ -58,7 +58,7 @@ export default function Country({ data }) {
       <p className="country__currency">
         <span className="country__detail">
           <AttachMoneyOutlinedIcon />
-          {cur ? `${name} (${symbol})` : "No official"}
+          {cur ? `${name} ${symbol ? `(${symbol})` : ""}` : "No official"}
         </span>
       </p>
     </div>
