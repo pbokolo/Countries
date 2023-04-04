@@ -18,6 +18,7 @@
     }
 
     &--error:focus {
+      color: var(--color-error);
       border-bottom: 0.1rem solid var(--color-error);
     }
   }

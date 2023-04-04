@@ -5,6 +5,7 @@ import TextInput from "./TextInput";
 export default function SearchForm({ submitHandler, error }) {
   const [searchKeyWord, setSearchKeyword] = useState("");
   const handleChange = (e) => setSearchKeyword(e.target.value);
+
   return (
     <form
       className="form"

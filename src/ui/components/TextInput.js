@@ -17,9 +17,7 @@ export default function TextInput({
         placeholder={placeholder}
         className={`input__text ${error ? "input__text--error" : ""}`}
       />
-      <label className={`input__label ${error ? "input__label--error" : ""}`}>
-        {error || label}
-      </label>
+      <label className={"input__label"}>{label}</label>
     </div>
   );
 }
