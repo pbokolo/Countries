@@ -5,11 +5,19 @@ import {
   fetchCountry,
   fetchRegion,
 } from "../../controller/countries";
-import { LocateBtn, CountryContainer, AppBar, Loader } from "../components";
+import {
+  LocateBtn,
+  CountryContainer,
+  AppBar,
+  Loader,
+  DetailsDialog,
+} from "../components";
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState(null);
   const [error, setError] = useState("");
+  const [showDialog, setShowDialog] = useState(false);
   const loading = countries.length === 0;
 
   useEffect(() => {
@@ -46,6 +54,11 @@ export default function Home() {
   };
 
   const handleGeoLoc = () => console.log("Should geolocate");
+
+  const handleCountryClick = (e) => {
+    setSelectedCountry(countries[e.target.closest("div").dataset.index]);
+    setShowDialog(true);
+  };
   return (
     <div className="page page__home">
       <AppBar
@@ -54,9 +67,22 @@ export default function Home() {
         menuClickHandler={handleMenuClick}
       />
       <div className="content">
-        {loading ? <Loader /> : <CountryContainer countries={countries} />}
+        {loading ? (
+          <Loader />
+        ) : (
+          <CountryContainer
+            countries={countries}
+            clickHandler={handleCountryClick}
+          />
+        )}
       </div>
       <LocateBtn clickHandler={handleGeoLoc} />
+      {showDialog && selectedCountry && (
+        <DetailsDialog
+          data={selectedCountry}
+          closeHandler={() => setShowDialog(false)}
+        />
+      )}
     </div>
   );
 }

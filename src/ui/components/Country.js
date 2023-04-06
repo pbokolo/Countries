@@ -18,7 +18,7 @@ function formatCompactNumber(number) {
   }
 }
 
-export default function Country({ data }) {
+export default function Country({ index, data }) {
   const { languages } = data;
   const [lang] = languages ? Object.keys(languages) : ["No official language"];
   const [cur] = data.currencies
@@ -29,7 +29,7 @@ export default function Country({ data }) {
       ? data.currencies[`${cur}`]
       : { name: "No official", symbol: "No official" };
   return (
-    <div className="country">
+    <div className="country" data-index={index}>
       <img
         src={data.flags.png}
         alt={`${data?.name?.common} flag`}
