@@ -6,8 +6,12 @@ import TranslateIcon from "@mui/icons-material/Translate";
 import GroupsIcon from "@mui/icons-material/Groups";
 
 export default function DetailsDialog({ data, closeHandler }) {
-  let languages = Object.values(data.languages);
-  let neighbors = Object.values(data.borders);
+  let languages = data.languages
+    ? Object.values(data.languages)
+    : "Not official";
+  let neighbors = data.borders
+    ? Object.values(data.borders)
+    : "No neightboring countries";
   return (
     <div className="dialog dialog__overlay" onClick={closeHandler}>
       <div className="dialog__container">
@@ -25,14 +29,14 @@ export default function DetailsDialog({ data, closeHandler }) {
           <p className="country__region">
             <span className="country__detail">
               <LocationCityIcon />
-              {data.capital}
+              {data.capital || "No official capital"}
             </span>
           </p>
 
           <p className="country__region">
             <span className="country__detail">
               <SouthAmericaIcon />
-              {data.subregion}
+              {data.subregion || "No official"}
             </span>
           </p>
           <p className="country__region">

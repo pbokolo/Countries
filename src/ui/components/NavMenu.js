@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 export default function NavMenu({ clickHandler }) {
   const [selected, setSelected] = useState(0);
   const regions = ["All", "Africa", "Antarctic", "Asia", "Europe", "Oceania"];
