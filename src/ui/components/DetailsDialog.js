@@ -6,6 +6,7 @@ import TranslateIcon from "@mui/icons-material/Translate";
 import GroupsIcon from "@mui/icons-material/Groups";
 
 export default function DetailsDialog({ data, closeHandler }) {
+  console.log(data);
   let languages = data.languages
     ? Object.values(data.languages)
     : "Not official";
@@ -25,6 +26,7 @@ export default function DetailsDialog({ data, closeHandler }) {
             className="country__flag"
           />
         </div>
+        <div className="neighbor__container">{`${neighbors}`}</div>
         <div className="details__container">
           <p className="country__region">
             <span className="country__detail">
@@ -43,12 +45,6 @@ export default function DetailsDialog({ data, closeHandler }) {
             <span className="country__detail">
               <TranslateIcon />
               {`${languages}`}
-            </span>
-          </p>
-          <p className="country__region">
-            <span className="country__detail">
-              <GroupsIcon />
-              {`${neighbors}`}
             </span>
           </p>
         </div>
