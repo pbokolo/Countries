@@ -1,12 +1,12 @@
 import React from "react";
+import NeighborCountry from "./NeighborCountry";
+
 import CloseIcon from "@mui/icons-material/Close";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import SouthAmericaIcon from "@mui/icons-material/SouthAmerica";
 import TranslateIcon from "@mui/icons-material/Translate";
-import GroupsIcon from "@mui/icons-material/Groups";
 
 export default function DetailsDialog({ data, closeHandler }) {
-  console.log(data);
   let languages = data.languages
     ? Object.values(data.languages)
     : "Not official";
@@ -26,7 +26,11 @@ export default function DetailsDialog({ data, closeHandler }) {
             className="country__flag"
           />
         </div>
-        <div className="neighbor__container">{`${neighbors}`}</div>
+        <div className="neighbor__container">
+          {neighbors.map((neigh, index) => (
+            <NeighborCountry key={index} data={neigh} />
+          ))}
+        </div>
         <div className="details__container">
           <p className="country__region">
             <span className="country__detail">

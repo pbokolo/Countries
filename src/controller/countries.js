@@ -10,6 +10,8 @@ const fetchCountry = async (countName, setCountries, setError) => {
   setError("");
 };
 
+const fetchNeighbors = async (code, setCountries, setError) => {};
+
 const fetchRegion = async (region, setCountries, setError) => {
   setCountries([]);
   if (region === "all") {

@@ -16,6 +16,7 @@ import {
 export default function Home() {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [neighbors, setNeighbors] = useState(null);
   const [error, setError] = useState("");
   const [showDialog, setShowDialog] = useState(false);
   const loading = countries.length === 0;
