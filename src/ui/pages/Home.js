@@ -5,13 +5,7 @@ import {
   fetchCountry,
   fetchRegion,
 } from "../../controller/countries";
-import {
-  LocateBtn,
-  CountryContainer,
-  AppBar,
-  Loader,
-  DetailsDialog,
-} from "../components";
+import { CountryContainer, AppBar, DetailsDialog } from "../components";
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
@@ -19,7 +13,6 @@ export default function Home() {
 
   const [error, setError] = useState("");
   const [showDialog, setShowDialog] = useState(false);
-  const loading = countries.length === 0;
 
   useEffect(() => {
     getAll();
@@ -54,8 +47,6 @@ export default function Home() {
     await fetchRegion(data.toLowerCase(), setCountries, setError);
   };
 
-  const handleGeoLoc = () => console.log("Should geolocate");
-
   const handleCountryClick = (e) => {
     setSelectedCountry(countries[e.target.closest("div").dataset.index]);
     setShowDialog(true);
@@ -67,55 +58,17 @@ export default function Home() {
         submitHandler={handleSearch}
         menuClickHandler={handleMenuClick}
       />
-      <div className="content">
-        {loading ? (
-          <Loader />
-        ) : (
-          <>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-            <div>Country</div>
-          </>
-        )}
-      </div>
+      <CountryContainer
+        countries={countries}
+        clickHandler={handleCountryClick}
+      />
+
       {showDialog && selectedCountry && (
         <DetailsDialog
           data={selectedCountry}
           closeHandler={() => setShowDialog(false)}
         />
       )}
-      {/* <div className="content">
-        {loading ? (
-          <Loader />
-        ) : (
-          <CountryContainer
-            countries={countries}
-            clickHandler={handleCountryClick}
-          />
-        )}
-      </div>
-      {<LocateBtn clickHandler={handleGeoLoc} />}
-      {showDialog && selectedCountry && (
-        <DetailsDialog
-          data={selectedCountry}
-          closeHandler={() => setShowDialog(false)}
-        />
-      )} */}
     </div>
   );
 }

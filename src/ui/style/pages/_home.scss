@@ -5,7 +5,6 @@
   .content {
     width: 99%;
     height: 100%;
-    border: 1px solid brown;
     margin: 6rem auto 1rem auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax($card-width, $card-width));
@@ -14,29 +13,7 @@
     gap: $grid-gap;
     justify-content: center;
 
-    div {
-      background-color: aqua;
-    }
-
     .loader {
-      grid-column: 2 / 3;
-      justify-self: center;
-    }
-    .container {
-      grid-column: 2 / 6;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax($card-width, 1fr));
-      grid-template-rows: repeat(4, $card-height);
-      gap: $grid-gap;
-    }
-
-    .btn__locate {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      right: 50%;
-      z-index: 9999;
-      margin-bottom: 0.5rem;
       grid-column: 2 / 3;
       justify-self: center;
     }
