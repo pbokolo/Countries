@@ -10,7 +10,14 @@ const fetchCountry = async (countName, setCountries, setError) => {
   setError("");
 };
 
-const fetchNeighbors = async (code, setCountries, setError) => {};
+const fetchNeighbors = async (code, setCountries, setError) => {
+  setCountries([]);
+  const result = await axios.get(`${API}/alpha/${code}`);
+  if (!result) throw new Error(`Country ${code} not found`);
+  const [data] = result.data;
+  setCountries([data]);
+  setError("");
+};
 
 const fetchRegion = async (region, setCountries, setError) => {
   setCountries([]);
@@ -55,4 +62,4 @@ const fetchAll = async (setCountries, setError) => {
   setError("");
 };
 
-export { fetchCountry, fetchAll, fetchRegion };
+export { fetchCountry, fetchAll, fetchRegion, fetchNeighbors };

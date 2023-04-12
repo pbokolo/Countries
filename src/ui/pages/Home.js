@@ -16,7 +16,7 @@ import {
 export default function Home() {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const [neighbors, setNeighbors] = useState(null);
+
   const [error, setError] = useState("");
   const [showDialog, setShowDialog] = useState(false);
   const loading = countries.length === 0;
@@ -71,19 +71,51 @@ export default function Home() {
         {loading ? (
           <Loader />
         ) : (
-          <CountryContainer
-            countries={countries}
-            clickHandler={handleCountryClick}
-          />
+          <>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+            <div>Country</div>
+          </>
         )}
       </div>
-      <LocateBtn clickHandler={handleGeoLoc} />
       {showDialog && selectedCountry && (
         <DetailsDialog
           data={selectedCountry}
           closeHandler={() => setShowDialog(false)}
         />
       )}
+      {/* <div className="content">
+        {loading ? (
+          <Loader />
+        ) : (
+          <CountryContainer
+            countries={countries}
+            clickHandler={handleCountryClick}
+          />
+        )}
+      </div>
+      {<LocateBtn clickHandler={handleGeoLoc} />}
+      {showDialog && selectedCountry && (
+        <DetailsDialog
+          data={selectedCountry}
+          closeHandler={() => setShowDialog(false)}
+        />
+      )} */}
     </div>
   );
 }

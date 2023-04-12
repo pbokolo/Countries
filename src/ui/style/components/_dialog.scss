@@ -9,8 +9,8 @@
   .neighbor__container {
     margin-top: 0.25rem;
     display: flex;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   &__overlay {
