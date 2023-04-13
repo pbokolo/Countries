@@ -48,6 +48,8 @@ export default function Home() {
   };
 
   const handleCountryClick = (e) => {
+    /* setSelectedCountry(countries[e.target.closest("div").dataset.index]);
+    setShowDialog(true); */
     setSelectedCountry(countries[e.target.closest("div").dataset.index]);
     setShowDialog(true);
   };

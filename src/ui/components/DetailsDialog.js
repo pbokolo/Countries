@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import NeighborCountry from "./NeighborCountry";
 import CloseIcon from "@mui/icons-material/Close";
@@ -6,22 +6,13 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import SouthAmericaIcon from "@mui/icons-material/SouthAmerica";
 import TranslateIcon from "@mui/icons-material/Translate";
 
-import { fetchNeighbors } from "../../controller/countries";
 export default function DetailsDialog({ data, closeHandler }) {
   let codes = data.borders
     ? Object.values(data.borders)
     : "No neightboring countries";
-  const [neighbors, setNeighbors] = useState([]);
   let languages = data.languages
     ? Object.values(data.languages)
     : "Not official";
-
-  const fetchNeib = async () => {
-    /*await fetchNeighbors(
-      ("COD", setNeighbors, () => console.log("There was an error"))
-    );*/
-  };
-  useEffect(() => fetchNeib(), [codes]);
 
   return (
     <div className="dialog dialog__overlay" onClick={closeHandler}>
@@ -37,7 +28,7 @@ export default function DetailsDialog({ data, closeHandler }) {
           />
         </div>
         <div className="neighbor__container">
-          {neighbors.map((neigh, index) => (
+          {codes.map((neigh, index) => (
             <NeighborCountry key={index} data={neigh} />
           ))}
         </div>
