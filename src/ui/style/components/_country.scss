@@ -75,7 +75,6 @@
   &__neighbor {
     width: 12rem;
     height: 3rem;
-    margin-left: 0.25rem;
     border: 0.1rem solid var(--color-grey-light-4);
     border-radius: 0.5rem;
     display: grid;
@@ -84,7 +83,6 @@
     overflow: hidden;
 
     &-flag {
-      background-color: blue;
       grid-column: 1 / 3;
     }
 
