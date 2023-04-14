@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
+// useSelector to read the state and useDispatch to broadcast actions
+import { useSelector, useDispatch } from "react-redux";
+// actions
+import { fillList, setSelected } from "../../controller/countrySlice";
 
 import {
+  fetchAllR,
   fetchAll,
   fetchCountry,
   fetchRegion,
@@ -8,6 +13,10 @@ import {
 import { CountryContainer, AppBar, DetailsDialog } from "../components";
 
 export default function Home() {
+  // Reads the list of contries from the store
+  const list = useSelector((state) => state.countries.list);
+  const dispatch = useDispatch();
+
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
@@ -21,7 +30,11 @@ export default function Home() {
   /**
    * Fetches all countries in the world
    */
-  const getAll = async () => await fetchAll(setCountries, setError);
+  const getAll = async () => {
+    const results = await fetchAllR();
+    setCountries(results);
+    //dispatch(() => fillList({ payload: results }));
+  };
 
   /**
    *
@@ -48,8 +61,6 @@ export default function Home() {
   };
 
   const handleCountryClick = (e) => {
-    /* setSelectedCountry(countries[e.target.closest("div").dataset.index]);
-    setShowDialog(true); */
     setSelectedCountry(countries[e.target.closest("div").dataset.index]);
     setShowDialog(true);
   };
