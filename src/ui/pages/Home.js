@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
-// useSelector to read the state and useDispatch to broadcast actions
-import { useSelector, useDispatch } from "react-redux";
-// actions
-import { fillList, setSelected } from "../../controller/countrySlice";
 
 import {
   fetchAllR,
-  fetchAll,
   fetchCountry,
   fetchRegion,
 } from "../../controller/countries";
 import { CountryContainer, AppBar, DetailsDialog } from "../components";
 
 export default function Home() {
-  // Reads the list of contries from the store
-  const list = useSelector((state) => state.countries.list);
-  const dispatch = useDispatch();
-
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
@@ -33,7 +24,6 @@ export default function Home() {
   const getAll = async () => {
     const results = await fetchAllR();
     setCountries(results);
-    //dispatch(() => fillList({ payload: results }));
   };
 
   /**

@@ -20,7 +20,9 @@ export default function NeighborCountry({ data }) {
           className="country__flag"
         />
       </div>
-      <p className="country__neighbor-name">{country && country.name.common}</p>
+      <div className="country__neighbor-name">
+        <p>{country && country.name.common}</p>
+      </div>
     </div>
   );
 }

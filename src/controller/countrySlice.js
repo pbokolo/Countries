@@ -4,8 +4,10 @@ export const countrySlice = createSlice({
   name: "countries",
   initialState: { list: [], selected: null, region: "all" },
   reducers: {
-    fillList: (state, action) => {
+    /* fillList: (state, action) => {
       state.list = action.payload;
+    } */ fillList: () => {
+      console.log("should fill list");
     },
     setSelected: (state, action) => {
       state.selected = action.payload;
