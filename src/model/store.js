@@ -1,9 +1,5 @@
-/**
- * This is the single source of truth accross the application
- *
- */
-
 import { configureStore } from "@reduxjs/toolkit";
-import countryReducer from "../controller/countrySlice";
+import countriesReducer from "../controller/countriesSlice";
 
-export default configureStore({ reducer: { countries: countryReducer } });
+/* Creates and exports a redux store */
+export default configureStore({ reducer: { countries: countriesReducer } });

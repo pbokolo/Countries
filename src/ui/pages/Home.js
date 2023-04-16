@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { setList } from "../../controller/countriesSlice";
 import {
   fetchAllR,
   fetchCountry,
@@ -8,6 +11,8 @@ import {
 import { CountryContainer, AppBar, DetailsDialog } from "../components";
 
 export default function Home() {
+  const countList = useSelector((state) => state.countries.list);
+  const dispatch = useDispatch();
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
@@ -23,7 +28,7 @@ export default function Home() {
    */
   const getAll = async () => {
     const results = await fetchAllR();
-    setCountries(results);
+    () => dispatch(() => setList(results));
   };
 
   /**
@@ -62,7 +67,7 @@ export default function Home() {
         menuClickHandler={handleMenuClick}
       />
       <CountryContainer
-        countries={countries}
+        countries={countList}
         clickHandler={handleCountryClick}
       />
 
