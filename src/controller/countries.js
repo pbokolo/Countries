@@ -1,28 +1,24 @@
 import axios from "axios";
 const API = "https://restcountries.com/v3.1";
 
-const fetchCountry = async (countName, setCountries, setError) => {
-  setCountries([]);
+const fetchCountry = async (countName, dispatch, setList, setError) => {
   const result = await axios.get(`${API}/name/${countName}`);
   if (!result) throw new Error(`Country ${countName} not found`);
   const [data] = result.data;
-  setCountries([data]);
+  dispatch(setList([data]));
   setError("");
 };
 
-const fetchNeighbors = async (code) => {
+const fetchNeighbor = async (code) => {
   const result = await axios.get(`${API}/alpha/${code}`);
   if (!result) throw new Error(`Country ${code} not found`);
   const [data] = result.data;
   return data;
-  //setCountries([data]);
-  //setError("");
 };
 
-const fetchRegion = async (region, setCountries, setError) => {
-  setCountries([]);
+const fetchRegion = async (region, dispatch, setList) => {
   if (region === "all") {
-    fetchAll(setCountries, setError);
+    fetchAll(dispatch, setList);
     return;
   }
   const result = await axios.get(`${API}/region/${region}`);
@@ -39,11 +35,10 @@ const fetchRegion = async (region, setCountries, setError) => {
     }
     return 0;
   });
-  setCountries(data);
+  dispatch(setList(data));
 };
 
-const fetchAll = async (setCountries, setError) => {
-  setCountries([]);
+const fetchAll = async (dispatch, setList) => {
   const result = await axios.get(`${API}/all`);
   if (!result) throw new Error(`Country not found`);
   let { data } = result;
@@ -58,27 +53,7 @@ const fetchAll = async (setCountries, setError) => {
     }
     return 0;
   });
-  setCountries(data);
-  setError("");
+  dispatch(setList(data));
 };
 
-const fetchAllR = async () => {
-  const result = await axios.get(`${API}/all`);
-  if (!result) throw new Error(`Country not found`);
-  let { data } = result;
-  data = data.sort((a, b) => {
-    const nameA = a.name.common.toUpperCase(); // ignore upper and lowercase
-    const nameB = b.name.common.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
-
-  return data;
-};
-
-export { fetchCountry, fetchAll, fetchAllR, fetchRegion, fetchNeighbors };
+export { fetchCountry, fetchAll, fetchRegion, fetchNeighbor };

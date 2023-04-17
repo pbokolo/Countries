@@ -4,16 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { setList } from "../../controller/countriesSlice";
 import {
-  fetchAllR,
+  fetchAll,
   fetchCountry,
   fetchRegion,
 } from "../../controller/countries";
 import { CountryContainer, AppBar, DetailsDialog } from "../components";
 
 export default function Home() {
-  const countList = useSelector((state) => state.countries.list);
+  const countries = useSelector((state) => state.countries.list);
   const dispatch = useDispatch();
-  const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
   const [error, setError] = useState("");
@@ -26,10 +25,7 @@ export default function Home() {
   /**
    * Fetches all countries in the world
    */
-  const getAll = async () => {
-    const results = await fetchAllR();
-    () => dispatch(() => setList(results));
-  };
+  const getAll = async () => await fetchAll(dispatch, setList);
 
   /**
    *
@@ -39,7 +35,7 @@ export default function Home() {
   const handleSearch = async (e, keyWord) => {
     e.preventDefault();
     try {
-      await fetchCountry(keyWord, setCountries, setError);
+      await fetchCountry(keyWord, dispatch, setList, setError);
     } catch (error) {
       setError(error.response.data.message);
     }
@@ -52,7 +48,7 @@ export default function Home() {
   const handleMenuClick = async (e) => {
     const [textContent] = e.target.childNodes;
     const { data } = textContent;
-    await fetchRegion(data.toLowerCase(), setCountries, setError);
+    await fetchRegion(data.toLowerCase(), dispatch, setList);
   };
 
   const handleCountryClick = (e) => {
@@ -67,7 +63,7 @@ export default function Home() {
         menuClickHandler={handleMenuClick}
       />
       <CountryContainer
-        countries={countList}
+        countries={countries}
         clickHandler={handleCountryClick}
       />
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchNeighbors } from "../../controller/countries";
+import { fetchNeighbor } from "../../controller/countries";
 
 export default function NeighborCountry({ data }) {
   const [country, setCountry] = useState(null);
@@ -8,7 +8,7 @@ export default function NeighborCountry({ data }) {
   }, [null]);
 
   const getNeighbor = async () => {
-    const cdata = await fetchNeighbors(data);
+    const cdata = await fetchNeighbor(data);
     setCountry(cdata);
   };
   return (
