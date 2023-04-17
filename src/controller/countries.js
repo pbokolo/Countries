@@ -23,24 +23,18 @@ const fetchRegion = async (region, dispatch, setList) => {
   }
   const result = await axios.get(`${API}/region/${region}`);
   if (!result) throw new Error(`Country not found`);
-  let { data } = result;
-  data = data.sort((a, b) => {
-    const nameA = a.name.common.toUpperCase(); // ignore upper and lowercase
-    const nameB = b.name.common.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
+  const data = handleResult(result);
   dispatch(setList(data));
 };
 
 const fetchAll = async (dispatch, setList) => {
   const result = await axios.get(`${API}/all`);
   if (!result) throw new Error(`Country not found`);
+  const data = handleResult(result);
+  dispatch(setList(data));
+};
+
+const handleResult = (result) => {
   let { data } = result;
   data = data.sort((a, b) => {
     const nameA = a.name.common.toUpperCase(); // ignore upper and lowercase
@@ -53,7 +47,8 @@ const fetchAll = async (dispatch, setList) => {
     }
     return 0;
   });
-  dispatch(setList(data));
+
+  return data;
 };
 
 export { fetchCountry, fetchAll, fetchRegion, fetchNeighbor };
