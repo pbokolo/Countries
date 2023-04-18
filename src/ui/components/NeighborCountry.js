@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { fetchNeighbor } from "../../controller/countries";
+import { useDispatch } from "react-redux";
+
+import { Countries } from "../../controller/countries";
 
 export default function NeighborCountry({ data }) {
   const [country, setCountry] = useState(null);
+  const controller = new Countries(useDispatch);
   useEffect(() => {
     getNeighbor();
   }, [null]);
 
   const getNeighbor = async () => {
-    const cdata = await fetchNeighbor(data);
+    const cdata = await controller.fetchByCode(data);
     setCountry(cdata);
   };
   return (

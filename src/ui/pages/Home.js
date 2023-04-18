@@ -2,30 +2,19 @@ import React, { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { setList } from "../../controller/countriesSlice";
-import {
-  fetchAll,
-  fetchCountry,
-  fetchRegion,
-} from "../../controller/countries";
+import { Countries } from "../../controller/countries";
 import { CountryContainer, AppBar, DetailsDialog } from "../components";
 
 export default function Home() {
   const countries = useSelector((state) => state.countries.list);
-  const dispatch = useDispatch();
   const [selectedCountry, setSelectedCountry] = useState(null);
-
+  const controller = new Countries(useDispatch);
   const [error, setError] = useState("");
   const [showDialog, setShowDialog] = useState(false);
 
   useEffect(() => {
-    getAll();
+    controller.fetchAll();
   }, []);
-
-  /**
-   * Fetches all countries in the world
-   */
-  const getAll = async () => await fetchAll(dispatch, setList);
 
   /**
    *
@@ -35,7 +24,7 @@ export default function Home() {
   const handleSearch = async (e, keyWord) => {
     e.preventDefault();
     try {
-      await fetchCountry(keyWord, dispatch, setList, setError);
+      await controller.fetchByName(keyWord, setError);
     } catch (error) {
       setError(error.response.data.message);
     }
@@ -48,7 +37,7 @@ export default function Home() {
   const handleMenuClick = async (e) => {
     const [textContent] = e.target.childNodes;
     const { data } = textContent;
-    await fetchRegion(data.toLowerCase(), dispatch, setList);
+    controller.fetchByRegion(data.toLowerCase());
   };
 
   const handleCountryClick = (e) => {

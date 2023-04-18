@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import NeighborCountry from "./NeighborCountry";
 import CloseIcon from "@mui/icons-material/Close";
