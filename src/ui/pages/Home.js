@@ -7,7 +7,6 @@ import { CountryContainer, AppBar, DetailsDialog } from "../components";
 
 export default function Home() {
   const countries = useSelector((state) => state.countries.list);
-  const [selectedCountry, setSelectedCountry] = useState(null);
   const controller = new Countries(useDispatch);
   const [error, setError] = useState("");
   const [showDialog, setShowDialog] = useState(false);
@@ -41,7 +40,7 @@ export default function Home() {
   };
 
   const handleCountryClick = (e) => {
-    setSelectedCountry(countries[e.target.closest("div").dataset.index]);
+    controller.handleCountryClick(e.target.closest("div").dataset.index);
     setShowDialog(true);
   };
   return (
@@ -56,11 +55,8 @@ export default function Home() {
         clickHandler={handleCountryClick}
       />
 
-      {showDialog && selectedCountry && (
-        <DetailsDialog
-          data={selectedCountry}
-          closeHandler={() => setShowDialog(false)}
-        />
+      {showDialog && (
+        <DetailsDialog closeHandler={() => setShowDialog(false)} />
       )}
     </div>
   );

@@ -1,15 +1,16 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+
 import NeighborCountry from "./NeighborCountry";
 import CloseIcon from "@mui/icons-material/Close";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import SouthAmericaIcon from "@mui/icons-material/SouthAmerica";
 import TranslateIcon from "@mui/icons-material/Translate";
-
-export default function DetailsDialog({ data, closeHandler }) {
-  let codes = data.borders
-    ? Object.values(data.borders)
-    : "No neightboring countries";
+export default function DetailsDialog({ closeHandler }) {
+  const { list, selectedCountry } = useSelector((state) => state.countries);
+  const data = list[selectedCountry];
+  let codes = data.borders ? Object.values(data.borders) : [];
   let languages = data.languages
     ? Object.values(data.languages)
     : "Not official";

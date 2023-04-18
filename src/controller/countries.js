@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setList } from "./countriesSlice";
+import { setList, setSelectedCountry } from "./countriesSlice";
 
 class Countries {
   #API = "https://restcountries.com/v3.1";
@@ -81,6 +81,10 @@ class Countries {
       }
       return 0;
     });
+  }
+
+  handleCountryClick(index) {
+    this.#dispatch(setSelectedCountry(index));
   }
 }
 
