@@ -1,25 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-export default function NavMenu({ clickHandler }) {
-  const [selected, setSelected] = useState(0);
+import { setRegion } from "../../controller/countriesSlice";
+
+export default function NavMenu() {
+  const selectedRegion = useSelector((state) => state.countries.region);
+  const dispatch = useDispatch();
   const regions = ["All", "Africa", "Antarctic", "Asia", "Europe", "Oceania"];
   return (
     <div className="nav">
       <ul
         className="nav__list"
-        onClick={(e) => {
-          setSelected(Number(e.target.dataset.index));
-          clickHandler(e);
-        }}
+        onClick={(e) => dispatch(setRegion(e.target.dataset.region))}
       >
         {regions.map((region, index) => (
           <li
             key={index}
             className={`nav__list-item ${
-              index === selected ? "nav__list-item--active" : ""
+              region.toLocaleLowerCase() === selectedRegion
+                ? "nav__list-item--active"
+                : ""
             }`}
             value={region}
-            data-index={index}
+            data-region={region.toLocaleLowerCase()}
           >
             {region}
           </li>

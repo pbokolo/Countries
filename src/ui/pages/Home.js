@@ -7,13 +7,18 @@ import { CountryContainer, AppBar, DetailsDialog } from "../components";
 
 export default function Home() {
   const countries = useSelector((state) => state.countries.list);
+  const region = useSelector((state) => state.countries.region);
   const controller = new Countries(useDispatch);
   const [error, setError] = useState("");
   const [showDialog, setShowDialog] = useState(false);
 
   useEffect(() => {
-    controller.fetchAll();
-  }, []);
+    getCountries();
+  }, [region]);
+
+  const getCountries = async () => {
+    await controller.fetchByRegion(region);
+  };
 
   /**
    *
@@ -29,27 +34,13 @@ export default function Home() {
     }
   };
 
-  /**
-   * Fetches all countries from a region
-   * @param {Event object} e
-   */
-  const handleMenuClick = async (e) => {
-    const [textContent] = e.target.childNodes;
-    const { data } = textContent;
-    controller.fetchByRegion(data.toLowerCase());
-  };
-
   const handleCountryClick = (e) => {
     controller.handleCountryClick(e.target.closest("div").dataset.index);
     setShowDialog(true);
   };
   return (
     <div className="page page__home">
-      <AppBar
-        error={error}
-        submitHandler={handleSearch}
-        menuClickHandler={handleMenuClick}
-      />
+      <AppBar error={error} submitHandler={handleSearch} />
       <CountryContainer
         countries={countries}
         clickHandler={handleCountryClick}
