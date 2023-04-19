@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { Countries } from "../../controller/countries";
 import { CountryContainer, AppBar, DetailsDialog } from "../components";
 
 export default function Home() {
-  const countries = useSelector((state) => state.countries.list);
-  const region = useSelector((state) => state.countries.region);
   const controller = new Countries(useDispatch);
   const [error, setError] = useState("");
   const [showDialog, setShowDialog] = useState(false);
-
-  useEffect(() => {
-    getCountries();
-  }, [region]);
-
-  const getCountries = async () => {
-    await controller.fetchByRegion(region);
-  };
 
   /**
    *
@@ -41,10 +31,7 @@ export default function Home() {
   return (
     <div className="page page__home">
       <AppBar error={error} submitHandler={handleSearch} />
-      <CountryContainer
-        countries={countries}
-        clickHandler={handleCountryClick}
-      />
+      <CountryContainer clickHandler={handleCountryClick} />
 
       {showDialog && (
         <DetailsDialog closeHandler={() => setShowDialog(false)} />

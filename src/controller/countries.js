@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setList, setSelectedCountry } from "./countriesSlice";
+import { setLoading, setList, setSelectedCountry } from "./countriesSlice";
 
 class Countries {
   #API = "https://restcountries.com/v3.1";
@@ -16,6 +16,7 @@ class Countries {
     const result = await axios.get(`${this.#API}/all`);
     const data = this.#handleResult(result);
     this.#dispatch(setList(data));
+    this.#dispatch(setLoading(false));
   }
 
   /**
@@ -24,13 +25,16 @@ class Countries {
    * @returns An array of countries
    */
   async fetchByRegion(region) {
+    this.#dispatch(setLoading(true));
     if (region === "all") {
       this.fetchAll();
+
       return;
     }
     const result = await axios.get(`${this.#API}/region/${region}`);
     const data = this.#handleResult(result);
     this.#dispatch(setList(data));
+    this.#dispatch(setLoading(false));
   }
 
   /**
@@ -39,11 +43,13 @@ class Countries {
    * @param {Error handler} setError
    */
   async fetchByName(countName, setError) {
+    this.#dispatch(setLoading(true));
     const result = await axios.get(`${this.#API}/name/${countName}`);
     if (!result) throw new Error(`Country ${countName} not found`);
     const [data] = result.data;
     this.#dispatch(setList([data]));
     setError("");
+    this.#dispatch(setLoading(false));
   }
 
   /**

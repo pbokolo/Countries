@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import Country from "./Country";
 import Loader from "./Loader";
 
-export default function CountryContainer({ countries, clickHandler }) {
+import { Countries } from "../../controller/countries";
+
+export default function CountryContainer({ clickHandler }) {
+  const controller = new Countries(useDispatch);
+  const { loading, list } = useSelector((state) => state.countries);
+  const region = useSelector((state) => state.countries.region);
+  useEffect(() => {
+    getCountries();
+  }, [region]);
+
+  const getCountries = async () => {
+    await controller.fetchByRegion(region);
+  };
   return (
     <div className="content" onClick={clickHandler}>
-      {countries.length === 0 ? (
+      {loading ? (
         <Loader />
       ) : (
-        countries.map((country, index) => (
+        list.map((country, index) => (
           <Country key={index} index={index} data={country} />
         ))
       )}
