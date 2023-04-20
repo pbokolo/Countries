@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const countriesSlice = createSlice({
   name: "countries",
   initialState: {
-    loading: false,
+    loading: true,
     list: [],
     selectedCountry: null,
     region: "all",
@@ -16,6 +16,9 @@ export const countriesSlice = createSlice({
       state.list = action.payload;
     },
     setSelectedCountry: (state, action) => {
+      state.selectedCountry = state.list[action.payload];
+    },
+    changeSelectedCountry: (state, action) => {
       state.selectedCountry = action.payload;
     },
     setRegion: (state, action) => {
@@ -24,7 +27,12 @@ export const countriesSlice = createSlice({
   },
 });
 
-export const { setLoading, setList, setSelectedCountry, setRegion } =
-  countriesSlice.actions;
+export const {
+  setLoading,
+  setList,
+  setSelectedCountry,
+  changeSelectedCountry,
+  setRegion,
+} = countriesSlice.actions;
 
 export default countriesSlice.reducer;

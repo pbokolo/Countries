@@ -28,14 +28,18 @@ export default function Home() {
     controller.handleCountryClick(e.target.closest("div").dataset.index);
     setShowDialog(true);
   };
+
+  const handleClodeDialog = (e) => {
+    if (e.target.closest("div").id) {
+      setShowDialog(false);
+    }
+  };
   return (
     <div className="page page__home">
       <AppBar error={error} submitHandler={handleSearch} />
       <CountryContainer clickHandler={handleCountryClick} />
 
-      {showDialog && (
-        <DetailsDialog closeHandler={() => setShowDialog(false)} />
-      )}
+      {showDialog && <DetailsDialog closeHandler={handleClodeDialog} />}
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { changeSelectedCountry } from "../../controller/countriesSlice";
+import { Countries } from "../../controller/countries";
 
 import NeighborCountry from "./NeighborCountry";
 import CloseIcon from "@mui/icons-material/Close";
@@ -8,19 +10,26 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import SouthAmericaIcon from "@mui/icons-material/SouthAmerica";
 import TranslateIcon from "@mui/icons-material/Translate";
 export default function DetailsDialog({ closeHandler }) {
-  const { list, selectedCountry } = useSelector((state) => state.countries);
-  const data = list[selectedCountry];
+  const data = useSelector((state) => state.countries.selectedCountry);
+  const dispatch = useDispatch();
+  const controller = new Countries(useDispatch);
   let codes = data.borders ? Object.values(data.borders) : [];
   let languages = data.languages
     ? Object.values(data.languages)
     : "Not official";
 
+  const neighClickHandler = async (e) => {
+    const neighCount = await controller.fetchByCode(
+      codes[e.target.closest("div").dataset.index]
+    );
+    dispatch(changeSelectedCountry(neighCount));
+  };
   return (
-    <div className="dialog dialog__overlay" onClick={closeHandler}>
+    <div id="overlay" className="dialog dialog__overlay" onClick={closeHandler}>
       <div className="dialog__container">
-        <span className="dialog__close">
+        <div id="close" className="dialog__close">
           <CloseIcon className="dialog__close-icon" />
-        </span>
+        </div>
         <div className="flag__container">
           <img
             src={data.flags.png}
@@ -28,9 +37,9 @@ export default function DetailsDialog({ closeHandler }) {
             className="country__flag"
           />
         </div>
-        <div className="neighbor__container">
+        <div className="neighbor__container" onClick={neighClickHandler}>
           {codes.map((neigh, index) => (
-            <NeighborCountry key={index} data={neigh} />
+            <NeighborCountry key={index} data={neigh} index={index} />
           ))}
         </div>
         <div className="details__container">

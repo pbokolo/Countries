@@ -12,7 +12,8 @@
   grid-template-rows: repeat(10, 3rem);
   grid-template-columns: repeat(25, 1rem);
 
-  &:hover {
+  &:hover,
+  &__neighbor:hover {
     cursor: pointer;
     transform: translateY(-0.3rem);
     box-shadow: 0 0.15rem 0.1rem var(--color-grey-light-4);
@@ -22,7 +23,8 @@
     background-color: rgba(#ffffff, 0.8);
   }
 
-  &:active {
+  &:active,
+  &__neighbor:active {
     transform: translateY(0.1rem);
     box-shadow: 0 0.1rem 0.1rem var(--color-grey-light-4);
   }
@@ -80,6 +82,7 @@
     overflow: hidden;
     display: flex;
     cursor: pointer;
+    transition: all 0.2s;
 
     &-flag {
       width: 45%;

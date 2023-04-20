@@ -89,8 +89,8 @@ class Countries {
     });
   }
 
-  handleCountryClick(index) {
-    this.#dispatch(setSelectedCountry(index));
+  handleCountryClick(country) {
+    this.#dispatch(setSelectedCountry(country));
   }
 }
 
