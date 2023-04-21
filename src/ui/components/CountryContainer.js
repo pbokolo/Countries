@@ -9,7 +9,8 @@ import { Countries } from "../../controller/countries";
 export default function CountryContainer({ clickHandler }) {
   const controller = new Countries(useDispatch);
   const { loading, list } = useSelector((state) => state.countries);
-  const region = useSelector((state) => state.countries.region);
+  const region = window.location.hash.slice(1) || "all";
+
   useEffect(() => {
     getCountries();
   }, [region]);
@@ -17,6 +18,7 @@ export default function CountryContainer({ clickHandler }) {
   const getCountries = async () => {
     await controller.fetchByRegion(region);
   };
+
   return (
     <div className="content" onClick={clickHandler}>
       {loading ? (

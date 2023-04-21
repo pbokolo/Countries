@@ -9,10 +9,7 @@ export default function NavMenu() {
   const regions = ["All", "Africa", "Antarctic", "Asia", "Europe", "Oceania"];
   return (
     <div className="nav">
-      <ul
-        className="nav__list"
-        onClick={(e) => dispatch(setRegion(e.target.dataset.region))}
-      >
+      <ul className="nav__list">
         {regions.map((region, index) => (
           <li
             key={index}
@@ -24,7 +21,7 @@ export default function NavMenu() {
             value={region}
             data-region={region.toLocaleLowerCase()}
           >
-            {region}
+            <a href={`#${region.toLocaleLowerCase()}`}>{region}</a>
           </li>
         ))}
       </ul>
