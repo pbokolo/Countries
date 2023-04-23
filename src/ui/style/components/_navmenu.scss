@@ -1,5 +1,17 @@
 .nav {
-  &__list {
+  &__options {
+    width: 100%;
+    border: none;
+    border-bottom: 0.1rem solid var(--color-grey-light-4);
+    background-color: var(--color-white);
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+
+    &-parent {
+      background-color: antiquewhite;
+    }
+  }
+  /* &__list {
     list-style: none;
     &-item {
       display: inline-block;
@@ -37,28 +49,27 @@
       &:active {
         animation: bounce 3s infinite;
       }
-    }
+    } */
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
   }
 
-  @keyframes bounce {
-    0% {
-      transform: translateY(0);
-    }
+  25% {
+    transform: translateY(0.1rem);
+  }
 
-    25% {
-      transform: translateY(0.1rem);
-    }
+  50% {
+    transform: translateY(0);
+  }
 
-    50% {
-      transform: translateY(0);
-    }
+  75% {
+    transform: translateY(0.05rem);
+  }
 
-    75% {
-      transform: translateY(0.05rem);
-    }
-
-    100% {
-      transform: translateY(0);
-    }
+  100% {
+    transform: translateY(0);
   }
 }

@@ -19,7 +19,6 @@ export default function Home() {
       setShowDialog(false);
     }
   };
-
   return (
     <div className="page page__home">
       <AppBar />
