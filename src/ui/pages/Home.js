@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Countries } from "../../controller/countries";
 import { CountryContainer, AppBar, DetailsDialog } from "../components";
 
 export default function Home() {
+  const { selectedCountry } = useSelector((state) => state.countries);
   const controller = new Countries(useDispatch);
   const [showDialog, setShowDialog] = useState(false);
 
@@ -24,7 +25,11 @@ export default function Home() {
       <AppBar />
       <CountryContainer clickHandler={handleCountryClick} />
 
-      {showDialog && <DetailsDialog closeHandler={handleClodeDialog} />}
+      {showDialog && selectedCountry ? (
+        <DetailsDialog closeHandler={handleClodeDialog} />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

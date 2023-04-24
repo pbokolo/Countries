@@ -15,11 +15,22 @@
   align-items: center;
 
   .form {
-    grid-column: 5 / 9;
+    @include respond(xs) {
+      grid-column: 2 / 8;
+    }
+    @include respond(lg) {
+      grid-column: 4 / 8;
+    }
   }
 
   .nav {
-    grid-column: 10 / 12;
     justify-self: stretch;
+    @include respond(xs) {
+      grid-column: 8 / 12;
+    }
+
+    @include respond(lg) {
+      grid-column: 9 / 12;
+    }
   }
 }
