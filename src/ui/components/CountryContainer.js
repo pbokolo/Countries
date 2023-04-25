@@ -8,7 +8,7 @@ import { Countries } from "../../controller/countries";
 
 export default function CountryContainer({ clickHandler }) {
   const controller = new Countries(useDispatch);
-  const { loading, list } = useSelector((state) => state.countries);
+  let { loading, list } = useSelector((state) => state.countries);
   const region = window.location.hash.slice(1) || "all";
 
   useEffect(() => {
