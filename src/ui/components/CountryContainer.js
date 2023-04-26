@@ -6,7 +6,7 @@ import Loader from "./Loader";
 
 import { Countries } from "../../controller/countries";
 
-export default function CountryContainer({ clickHandler }) {
+export default function CountryContainer() {
   const controller = new Countries(useDispatch);
   let { loading, list } = useSelector((state) => state.countries);
   const region = window.location.hash.slice(1) || "all";
@@ -20,7 +20,7 @@ export default function CountryContainer({ clickHandler }) {
   };
 
   return (
-    <div className="content" onClick={clickHandler}>
+    <div className="content">
       {loading ? (
         <Loader />
       ) : (

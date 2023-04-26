@@ -1,35 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { useDispatch, useSelector } from "react-redux";
-
-import { Countries } from "../../controller/countries";
-import { CountryContainer, AppBar, DetailsDialog } from "../components";
+import { CountryContainer, AppBar } from "../components";
 
 export default function Home() {
-  const { selectedCountry } = useSelector((state) => state.countries);
-  const controller = new Countries(useDispatch);
-  const [showDialog, setShowDialog] = useState(false);
-
-  const handleCountryClick = (e) => {
-    controller.handleCountryClick(e.target.closest("div").dataset.index);
-    setShowDialog(true);
-  };
-
-  const handleClodeDialog = (e) => {
-    if (e.target.closest("div").id) {
-      setShowDialog(false);
-    }
-  };
   return (
     <div className="page page__home">
       <AppBar />
-      <CountryContainer clickHandler={handleCountryClick} />
-
-      {showDialog && selectedCountry ? (
-        <DetailsDialog closeHandler={handleClodeDialog} />
-      ) : (
-        ""
-      )}
+      <CountryContainer />
     </div>
   );
 }

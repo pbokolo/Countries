@@ -5,7 +5,6 @@ export const countriesSlice = createSlice({
   initialState: {
     loading: true,
     list: [],
-    selectedCountry: null,
   },
   reducers: {
     setLoading: (state, action) => {
@@ -14,20 +13,9 @@ export const countriesSlice = createSlice({
     setList: (state, action) => {
       state.list = action.payload;
     },
-    setSelectedCountry: (state, action) => {
-      state.selectedCountry = state.list[action.payload];
-    },
-    changeSelectedCountry: (state, action) => {
-      state.selectedCountry = action.payload;
-    },
   },
 });
 
-export const {
-  setLoading,
-  setList,
-  setSelectedCountry,
-  changeSelectedCountry,
-} = countriesSlice.actions;
+export const { setLoading, setList } = countriesSlice.actions;
 
 export default countriesSlice.reducer;
