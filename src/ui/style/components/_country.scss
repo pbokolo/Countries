@@ -25,7 +25,7 @@
     left: 0;
     background-color: var(--color-white);
     backface-visibility: hidden;
-    transition: all 0.9s ease;
+    transition: all 0.8s ease;
     box-shadow: 0 0.1rem 0.1rem var(--color-grey-light-3);
     border-radius: 0.5rem;
     border: 0.1rem solid var(--color-grey-light-3);
@@ -70,29 +70,12 @@
     }
   }
 
-  /* &:hover,
-  &__neighbor:hover {
-    cursor: pointer;
-    transform: translateY(-0.3rem);
-    box-shadow: 0 0.15rem 0.1rem var(--color-grey-light-4);
-  }
-
-  &:hover &__name {
-    background-color: rgba(#ffffff, 0.8);
-  }
- */
-  &:hover &__side--front {
+  &--back &__side--front {
     transform: rotateY(-180deg);
   }
-  &:hover &__side--back {
+  &--back &__side--back {
     transform: rotateY(0deg);
   }
-
-  /*  &:active,
-  &__neighbor:active {
-    transform: translateY(0.1rem);
-    box-shadow: 0 0.1rem 0.1rem var(--color-grey-light-4);
-  } */
 
   &__flag {
     display: inline-block;

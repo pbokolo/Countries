@@ -2,7 +2,7 @@ import React from "react";
 
 import CloseIcon from "@mui/icons-material/Close";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
-import SouthAmericaIcon from "@mui/icons-material/SouthAmerica";
+
 import TranslateIcon from "@mui/icons-material/Translate";
 export default function CountrySideBack({ data }) {
   const languages = data.languages

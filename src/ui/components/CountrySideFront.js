@@ -29,7 +29,7 @@ export default function CountrySideFront({ data }) {
     }
   }
   return (
-    <div className="country__side country__side--front">
+    <div id="front" className="country__side country__side--front">
       <img
         src={data.flags.png}
         alt={`${data?.name?.common} flag`}
