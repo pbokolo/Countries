@@ -22,9 +22,10 @@ export default function CountrySideBack({ data }) {
       <p className="country__region">
         <span className="country__detail">
           <TranslateIcon />
-          {`${languages}`}
+          <span>{`${languages}`}</span>
         </span>
       </p>
+      <button className="btn btn--visit">visit</button>
     </div>
   );
 }

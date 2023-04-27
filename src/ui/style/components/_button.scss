@@ -1,20 +1,20 @@
-.btn{
-    background-color: var(--color-blue);
-    border: none;
-    transition: all .2s;
-    cursor: pointer; 
+.btn {
+  background-color: var(--color-blue);
+  border: none;
+  transition: all 0.2s;
+  cursor: pointer;
 
-    &:hover{
-        transform: translateY(-.1rem);
-        background-color: lighten(#0385d6, 5%);
-    }
+  &:hover {
+    transform: translateY(-0.1rem);
+    background-color: lighten(#0385d6, 5%);
+  }
 
-    &:active{
-        transform: translateY(.1rem);
-        background-color: darken(#0385d6, 5%);
-    }
+  &:active {
+    transform: translateY(0.1rem);
+    background-color: darken(#0385d6, 5%);
+  }
 
-   &__locate{
+  &__locate {
     height: 5rem;
     width: 5rem;
     border-radius: 50%;
@@ -22,36 +22,33 @@
     align-items: center;
     justify-content: center;
 
-    .icon{
-        width: 3rem;
-        height: 3rem;
-        color: var(--color-white);
-        animation: bounce 1s infinite;     
+    .icon {
+      width: 3rem;
+      height: 3rem;
+      color: var(--color-white);
+      animation: bounce 1s infinite;
+    }
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
     }
 
-   
-     
-   }
+    25% {
+      transform: translateY(0.1rem);
+    }
 
-   @keyframes bounce {
-     0%{
-        transform: translateY(0);
-     }
+    50% {
+      transform: translateY(0);
+    }
 
-     25%{
-        transform: translateY(0.1rem);
-     }
-     
-     50%{
-        transform: translateY(0);
-     }
-    
-     75%{
-        transform: translateY(0.05rem);
-     }
+    75% {
+      transform: translateY(0.05rem);
+    }
 
-     100%{
-        transform: translateY(0);
-     }
-   }
+    100% {
+      transform: translateY(0);
+    }
+  }
 }
