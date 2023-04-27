@@ -19,8 +19,23 @@ export default function CountryContainer() {
     await controller.fetchByRegion(region);
   };
 
+  const handleClick = (e) => {
+    const frontClass = "country--front",
+      backClass = "country--back";
+    const container = e.target.closest("div[id='container']");
+    const source = e.target.closest("div");
+    if (source.id === "front") {
+      container.classList.remove(frontClass);
+      container.classList.add(backClass);
+    }
+    if (source.id === "close") {
+      container.classList.remove(backClass);
+      container.classList.add(frontClass);
+    }
+  };
+
   return (
-    <div className="content">
+    <div className="content" onClick={handleClick}>
       {loading ? (
         <Loader />
       ) : (
