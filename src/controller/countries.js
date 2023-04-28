@@ -1,8 +1,10 @@
 import axios from "axios";
+import { GEOCODE_API_KEY } from "../keys";
 import { setLoading, setList } from "./countriesSlice";
 
 class Countries {
   #API = "https://restcountries.com/v3.1";
+  #GEO_API = "https://geocode.xyz/";
   #dispatch;
 
   constructor(dispatcher) {
@@ -64,6 +66,17 @@ class Countries {
     return data;
   }
 
+  async fetchByLocation(position) {
+    const { latitude, longitude } = position;
+    const result = await axios.get(
+      `${
+        this.#GEO_API
+      }/${latitude}/${longitude}?geoit=json&auth=${GEOCODE_API_KEY}`
+    );
+
+    console.log(result);
+  }
+
   /**
    * Handles the result of the api
    * @param {The result object} result
@@ -88,7 +101,6 @@ class Countries {
       return 0;
     });
   }
-
 }
 
 export { Countries };
