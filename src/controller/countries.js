@@ -4,7 +4,7 @@ import { setLoading, setList } from "./countriesSlice";
 
 class Countries {
   #API = "https://restcountries.com/v3.1";
-  #GEO_API = "https://geocode.xyz/";
+  #GEO_API = "https://api.opencagedata.com/geocode/v1/json?";
   #dispatch;
 
   constructor(dispatcher) {
@@ -69,12 +69,12 @@ class Countries {
   async fetchByLocation(position) {
     const { latitude, longitude } = position;
     const result = await axios.get(
-      `${
-        this.#GEO_API
-      }/${latitude}/${longitude}?geoit=json&auth=${GEOCODE_API_KEY}`
+      `${this.#GEO_API}q=${latitude}+${longitude}&key=${GEOCODE_API_KEY}`
     );
-
-    console.log(result);
+    const { country_code } = result.data.results[0].components;
+    const country = await this.fetchByCode(country_code);
+    this.#dispatch(setList([country]));
+    this.#dispatch(setLoading(false));
   }
 
   /**
