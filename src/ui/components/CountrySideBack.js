@@ -13,19 +13,24 @@ export default function CountrySideBack({ data }) {
       <div id="close" className="close">
         <CloseIcon className="close__icon" />
       </div>
-      <p className="country__capital">
-        <span className="country__detail">
+      <div className="country__capital">
+        <span className="country__detail country__detail-icon">
           <LocationCityIcon />
+        </span>
+        <span className="country__detail country__detail-value">
           {data?.capital || "No official capital"}
         </span>
-      </p>
-      <p className="country__languages">
-        <span className="country__detail">
+      </div>
+      <div className="country__languages">
+        <span className="country__detail country__detail-icon">
           <TranslateIcon />
-          <span>{`${languages}`}</span>
         </span>
-      </p>
-      <button className="btn btn--visit">visit</button>
+        <span className="country__detail country__detail-value">{`${languages}`}</span>
+      </div>
+      <div className="country__neighbors">
+        <h4 className="title">Neibors</h4>
+        <div className="neighbors">{data.borders}</div>
+      </div>
     </div>
   );
 }
