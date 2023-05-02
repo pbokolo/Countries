@@ -28,17 +28,19 @@
   }
 
   &__neighbor {
-    width: 12rem;
+    width: 5rem;
     height: 3rem;
     border: 0.1rem solid var(--color-grey-light-4);
     border-radius: 0.5rem;
     overflow: hidden;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
     cursor: pointer;
     transition: all 0.2s;
 
     &-flag {
-      width: 45%;
+      grid-row: 1 / -1;
       img {
         display: inline-block;
         width: 100%;
@@ -50,6 +52,10 @@
       font-size: 0.9rem;
       font-weight: 900;
       color: var(--color-grey-dark-1);
+      background-color: rgba(#f0eeee, 0.8);
+      border-radius: 0.5rem;
+      width: min-content;
+      padding: 0 0.5rem;
       align-self: center;
       margin-left: 0.2rem;
     }

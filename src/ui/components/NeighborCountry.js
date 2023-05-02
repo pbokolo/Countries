@@ -14,6 +14,7 @@ export default function NeighborCountry({ data, index }) {
     const cdata = await controller.fetchByCode(data);
     setCountry(cdata);
   };
+
   return (
     <div className="country__neighbor" data-index={index}>
       <div className="country__neighbor-flag" data-index={index}>
@@ -23,9 +24,11 @@ export default function NeighborCountry({ data, index }) {
           className="country__flag"
         />
       </div>
-      <div className="country__neighbor-name" data-index={index}>
-        <p>{country && country.name.common}</p>
-      </div>
+      {
+        <div className="country__neighbor-name" data-index={index}>
+          <p>{country && country.cca3}</p>
+        </div>
+      }
     </div>
   );
 }
