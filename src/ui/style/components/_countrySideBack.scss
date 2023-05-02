@@ -22,6 +22,26 @@
       &__languages {
         grid-row: 3 / 4;
         grid-column: 2 / 3;
+        height: min-content;
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        .country__detail {
+          &-value {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: min-content;
+            gap: 0.1rem;
+
+            .lang {
+              width: min-content;
+              height: min-content;
+              font-size: 1rem;
+              background-color: var(--color-white);
+              border-radius: 1rem;
+              padding: 0 1rem;
+            }
+          }
+        }
       }
 
       &__detail-value {

@@ -8,7 +8,7 @@ import TranslateIcon from "@mui/icons-material/Translate";
 export default function CountrySideBack({ data }) {
   const languages = data.languages
     ? Object.values(data.languages)
-    : "Not official";
+    : ["Not official"];
   const borders = data.borders ? Object.values(data.borders) : [];
 
   return (
@@ -28,10 +28,16 @@ export default function CountrySideBack({ data }) {
         <span className="country__detail country__detail-icon">
           <TranslateIcon />
         </span>
-        <span className="country__detail country__detail-value">{`${languages}`}</span>
+        <div className="country__detail country__detail-value">
+          {languages.map((lang, index) => (
+            <span className="lang" key={index}>
+              {lang}
+            </span>
+          ))}
+        </div>
       </div>
       <div className="country__neighbors">
-        <h4 className="country__neighbors-title">Neibors</h4>
+        <h4 className="country__neighbors-title">Neighbors</h4>
         <div className="country__neighbors-container">
           {borders.map((neigh, index) => (
             <NeighborCountry key={index} index={index} data={neigh} />
