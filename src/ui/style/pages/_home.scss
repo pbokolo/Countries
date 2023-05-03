@@ -19,10 +19,22 @@
     }
   }
 
-  .btn__locate {
+  .locate__container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+
+    .btn__locate {
+      margin: 0 auto;
+    }
+  }
+
+  /* .btn__locate {
     position: fixed;
     bottom: 0.5rem;
     left: 50%;
     right: 50%;
-  }
+  } */
 }

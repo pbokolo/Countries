@@ -7,7 +7,9 @@ export default function Home() {
     <div className="page page__home">
       <AppBar />
       <CountryContainer />
-      <LocateBtn />
+      <div className="locate__container">
+        <LocateBtn />
+      </div>
     </div>
   );
 }
