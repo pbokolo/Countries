@@ -69,7 +69,6 @@
         &-title {
           grid-row: 1 / 2;
           grid-column: 2 / 6;
-          align-self: center;
         }
 
         &-container {
@@ -81,7 +80,13 @@
           grid-auto-rows: min-content;
           gap: 0.5rem;
           overflow-y: scroll;
-          justify-self: center;
+          &--center {
+            justify-self: center;
+          }
+
+          &--left {
+            justify-self: start;
+          }
         }
       }
     }

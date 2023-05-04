@@ -8,7 +8,7 @@ import TranslateIcon from "@mui/icons-material/Translate";
 export default function CountrySideBack({ data }) {
   const languages = data.languages
     ? Object.values(data.languages)
-    : ["Not official"];
+    : ["Unofficial"];
   const borders = data.borders ? Object.values(data.borders) : [];
 
   return (
@@ -36,14 +36,24 @@ export default function CountrySideBack({ data }) {
           ))}
         </div>
       </div>
-      <div className="country__neighbors">
-        <h4 className="country__neighbors-title">Neighbors</h4>
-        <div className="country__neighbors-container">
-          {borders.map((neigh, index) => (
-            <NeighborCountry key={index} index={index} data={neigh} />
-          ))}
+      {borders.length > 0 ? (
+        <div className="country__neighbors">
+          <h4 className="country__neighbors-title">{`Neighbors(${borders.length})`}</h4>
+          <div
+            className={`country__neighbors-container ${
+              borders.length > 3
+                ? "country__neighbors-container--center"
+                : "country__neighbors-container--left"
+            }`}
+          >
+            {borders.map((neigh, index) => (
+              <NeighborCountry key={index} index={index} data={neigh} />
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
