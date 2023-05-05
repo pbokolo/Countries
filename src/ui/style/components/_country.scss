@@ -4,6 +4,7 @@
   width: min-content;
   height: min-content;
   position: relative;
+  transition: all 0.2s;
 
   &__side {
     width: $card-width;
@@ -27,6 +28,14 @@
     transform: rotateY(0deg);
   }
 
+  &:hover {
+    transform: translateY(-0.3rem);
+  }
+
+  &:active {
+    transform: translateY(0.3rem);
+  }
+
   &__neighbor {
     width: 5rem;
     height: 3rem;
@@ -36,7 +45,6 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
-    cursor: pointer;
     transition: all 0.2s;
 
     &-flag {
