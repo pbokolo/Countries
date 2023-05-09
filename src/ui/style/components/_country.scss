@@ -4,7 +4,7 @@
   width: min-content;
   height: min-content;
   position: relative;
-  transition: all 0.2s;
+  transition: all ease-in 0.2s;
 
   &__side {
     width: $card-width;
@@ -30,10 +30,6 @@
 
   &:hover {
     transform: translateY(-0.3rem);
-  }
-
-  &:active {
-    transform: translateY(0.3rem);
   }
 
   &__neighbor {
